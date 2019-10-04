@@ -25,6 +25,10 @@ def debugger(locals_, globals_, multi_lines=False, input_history=True,
     safe_word: string
         The string that is used to pass the debugger and
         continue with the program flow
+    Returns
+    -------
+    None
+        It does not return
     """
     locals_.update({"EXCEPTION": "No exception yet"})
     __input_history(input_history)
