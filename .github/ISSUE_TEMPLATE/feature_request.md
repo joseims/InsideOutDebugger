@@ -1,6 +1,6 @@
 ---
-name: 🚀 Feature request
-about: My feature is great!
+name: Feature request
+about: Tell your ideas!
 
 ---
 
