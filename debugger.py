@@ -1,3 +1,5 @@
+from pprint import pprint
+import inspect
 import traceback
 import sys
 import readline
@@ -49,12 +51,29 @@ def debugger(locals_, globals_, multi_lines=False, input_history=True,
 
 def __exec_command(cmd, globals_, locals_, safe_word):
     try:
-        exec(cmd, globals_, locals_)
+        if cmd == "globals":
+            for t in __iter_stack():
+                pprint(t[0].f_globals)
+        if cmd == "locals":
+            for t in __iter_stack():
+                pprint(t[0].f_locals)
+        else:
+            exec(cmd, globals_, locals_)
     except Exception as e:
         print("SOMETHING WENT WRONG")
         print(traceback.format_exc())
         locals_.update({"EXCEPTION": e})
 
+def __iter_stack():
+    for t in inspect.trace():
+        l = t[0].f_locals
+        if "self" in l.keys():
+            c = l['self'].__class__.__name__
+        else:
+            c = "None"
+        print(f"FILE: {t.filename}\tCLASS: {c}\tFUNC: {t.function}")
+        yield t
+        print("----------------")
 
 def __get_input_func(multi_lines):
     if (multi_lines):
