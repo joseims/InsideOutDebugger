@@ -1,6 +1,8 @@
 import traceback
 import sys
-import readline
+import os
+if os.name != "nt":
+    import readline
 
 
 def debugger(locals_, globals_, multi_lines=False, input_history=True,
@@ -63,5 +65,5 @@ def __get_input_func(multi_lines):
 
 
 def __input_history(input_history):
-    if input_history:
-        readline.set_auto_history(True)
+    if input_history and os.name != "nt":
+            readline.set_auto_history(True)
