@@ -37,7 +37,7 @@ def debugger(locals_, globals_, multi_lines=False, input_history=True,
 
     print("\nSTARTING DEBUG")
     while True:
-        cmd = input_func()
+        cmd = input_func("DEBUG: ")
 
         if (cmd == safe_word):
             break
