@@ -1,5 +1,5 @@
 import test_class as t
-import debugger as d
+from debugger import Debugger
 import time
 
 '''
@@ -32,4 +32,5 @@ if (__name__ == "__main__"):
     try:
         run()
     except KeyboardInterrupt:
-        d.debugger(locals(), globals())
+        d = Debugger(locals(), globals())
+        d.debug()
