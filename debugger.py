@@ -41,11 +41,15 @@ def debugger(locals_, globals_, multi_lines=False, input_history=True,
 
     print("\nSTARTING DEBUG")
     while True:
-        cmd = input_func("DEBUG: ")
+        if(not multi_lines):
+            cmd = input_func("DEBUG: ")
+        else: 
+             cmd = input_func()
+             if(cmd):
+                cmd = ''.join(cmd)[:-1]
 
         if (cmd == safe_word):
             break
-
         __exec_command(cmd, globals_, locals_, safe_word)
 
     print("QUITTING DEBUG")

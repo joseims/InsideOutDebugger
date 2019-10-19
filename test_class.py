@@ -1,4 +1,4 @@
-class Test1():
+class Object1():
     def __init__(self):
         self.a = 'a'
         self.b = 'b'
@@ -7,7 +7,7 @@ class Test1():
         print(self.a, self.b)
 
 
-class Test2():
+class Object2():
     def __init__(self):
         self.c = 'c'
         self.d = 'd'
